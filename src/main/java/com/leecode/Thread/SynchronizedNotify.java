@@ -1,7 +1,7 @@
 package com.leecode.Thread;
 
 /**
- * @Author: wm
+ * @Author: hataki
  * @Date: 2020/6/6
  * Time: 9:46
  * description:

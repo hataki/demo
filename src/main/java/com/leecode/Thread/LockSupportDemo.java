@@ -3,7 +3,7 @@ package com.leecode.Thread;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * @Author: wm
+ * @Author: hataki
  * @Date: 2020/6/5
  * Time: 10:28
  * description: 两个线程，交替输出字符显示

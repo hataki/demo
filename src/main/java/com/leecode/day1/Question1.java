@@ -49,6 +49,7 @@ public class Question1 {
     /**
      * 利用map数组构造映射，遍历nums[i]时，看target-nums[i]是否存在hash表中即可
      * 时间复杂度O（n），空间复杂度O（n）
+     * 4 ms	39.9 MB
      * @param nums
      * @param target
      * @return

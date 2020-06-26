@@ -21,7 +21,7 @@ package com.leecode.day1;
  * 链接：https://leetcode-cn.com/problems/add-two-numbers
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Quertion2 {
+public class Question2 {
 
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -30,10 +30,10 @@ public class Quertion2 {
 
 
 
+    class ListNode {
+        int val;
+        ListNode next;   // 下一个链表对象
+        ListNode(int x) { val = x; }  //赋值链表的值
+    }
 }
 
-class ListNode {
-    int val;
-    ListNode next;   // 下一个链表对象
-    ListNode(int x) { val = x; }  //赋值链表的值
-}

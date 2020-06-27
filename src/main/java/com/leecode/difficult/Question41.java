@@ -61,9 +61,48 @@ public class Question41 {
      *
      * Thinking about the algorithm should run in O(n) time
      * and uses constant extra space ,
-     * so i try to use double pointers at first .
+     * so i try to use double pointers at first .×
      */
+
+
+    /**
+     * copy
+     * 执行结果： 通过
+     * 显示详情 执行用时： 1 ms
+     * 在所有 Java 提交中击败了 87.52% 的用户
+     * 内存消耗： 37.9 MB ,
+     * 在所有 Java 提交中击败了 8.33% 的用户
+     */
+
     public int firstMissingPositive(int[] nums) {
+        int len = nums.length ;
+        for(int i=0 ;i < len ; i++){
+            while(nums[i] > 0 && nums[i] <= len && nums[nums[i] - 1 ] != nums[i]){
+                /**
+                 * match condition and not suit in right set
+                 */
+                swap(nums,nums[i]-1 ,i );
+            }
+        }
+
+        for(int i=0;i<len;i++){
+            if(nums[i] != i+ 1 ){
+                return i+1 ;
+            }
+        }
+
+        return len + 1 ;
+
+    }
+
+    private void swap(int[] nums, int index1, int index2) {
+        int temp = nums[index1];
+        nums[index1] = nums[index2];
+        nums[index2] = temp;
+    }
+
+
+    public int firstMissingPositive2(int[] nums) {
 
         int[] x = nums ;
         int result = 1 ;
@@ -84,4 +123,5 @@ public class Question41 {
         }
         return 0 ;
     }
+
 }

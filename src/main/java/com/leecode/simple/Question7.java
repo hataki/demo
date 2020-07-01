@@ -36,7 +36,7 @@ public class Question7 {
     }
 
     public int reverse(int x) {
-
+        return 0 ;
     }
 
 }

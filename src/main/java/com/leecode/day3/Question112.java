@@ -34,8 +34,25 @@ public class Question112 {
     }
 
     public boolean hasPathSum(TreeNode root, int sum) {
+
+        if(root == null ){
+            return false ;
+        }
+
+
+
         return true ;
 
+    }
+
+    public TreeNode nodeSub(TreeNode node , int x ){
+        if(node.left != null){
+            node.val = x - node.val;
+        }
+        if(node.right != null){
+            node.val = x - node.val;
+        }
+        return node ;
     }
 
 

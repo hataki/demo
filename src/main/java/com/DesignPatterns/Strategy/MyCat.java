@@ -7,4 +7,12 @@ package com.DesignPatterns.Strategy;
  * description:
  */
 public class MyCat {
+    int height,weight = 0 ;
+
+    public MyCat (int height ,int weight ){
+        this.height = height ;
+        this.weight = weight ;
+    }
+
+
 }

@@ -11,7 +11,7 @@ public class AcientFactory extends AbstractFactory {
 
     @Override
     Food createFood() {
-        return null;
+        return new Banana();
     }
 
     @Override

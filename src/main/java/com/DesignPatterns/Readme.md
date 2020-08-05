@@ -10,3 +10,4 @@
 * Mediate 调停者模式 （对内）
 * _典型应用 -- 中间件_  
 * ChainOfResponsibility 责任链模式
+* Observer 观察者模式 ***essential*** (Observer/Listenre/Hook/Callback都是观察者模式)

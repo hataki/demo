@@ -46,10 +46,11 @@ public class MyMain {
 class SensitiveFilter implements Filter{
 
     @Override
-    public void doFilter(Message m) {
+    public Boolean doFilter(Message m) {
         String r = m.getMsg();
         r = r.replace("996","965");
         m.setMsg(r);
+        return true ;
     }
 }
 
@@ -57,11 +58,12 @@ class SensitiveFilter implements Filter{
 class HtmlFilter implements Filter{
 
     @Override
-    public void doFilter(Message m) {
+    public Boolean doFilter(Message m) {
         String r = m.getMsg();
         r = r.replace('<','[');
         r = r.replace('>',']');
         m.setMsg(r);
+        return true ;
     }
 }
 
@@ -82,10 +84,11 @@ class FilterChain implements Filter{
         return this ;
     }
 
-    public void doFilter(Message m){
+    public Boolean doFilter(Message m){
         for(Filter f : filters){
-            f.doFilter(m);
+           if( !f.doFilter(m)) return false;
         }
+        return true ;
     }
 
 }

@@ -8,10 +8,11 @@ package com.DesignPatterns.ChainOfResponsibility;
  */
 public class MyFilter implements Filter {
     @Override
-    public void doFilter(Message m) {
+    public Boolean doFilter(Message m) {
         String r = m.getMsg();
         r = r.replace('<','[');
         r = r.replace('>',']');
         m.setMsg(r);
+        return true ;
     }
 }

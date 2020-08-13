@@ -67,7 +67,7 @@ public class DynamicProxy implements Singing{
 }
 
 /**
- * 动态代理类 handler ..
+ * 动态代理类 handler
  * 使用泛型来获取要动态代理对象类的类型；
  * 再通过反射机制，拿到代理对象的实例；
  * 在代理执行其实现类实现的实例方法。。。

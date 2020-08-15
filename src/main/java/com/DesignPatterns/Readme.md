@@ -17,4 +17,5 @@
 * Visitor 访问者模式 -- 一种将数据操作和数据结构分离的设计模式--> 各角色分离，提高扩展性；违反迪米特原则，修改成本过大
 * Builder 构造器模式
 * Bridge 桥接模式
+* Command 命令行模式(Action动作/Transaction事务模式)
   

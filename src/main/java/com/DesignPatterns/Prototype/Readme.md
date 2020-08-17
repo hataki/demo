@@ -9,3 +9,8 @@ protected native Object clone() throws CloneNotSupportedException;
 ~~~
 ---
 Object里面的clone()方法怎么实现?
+---
+
+Prototype 模式适用于 使用大量相同对象，属性多，且属性指定很麻烦的时候；
+
+* 区分 深克隆/浅克隆 *

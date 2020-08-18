@@ -19,4 +19,6 @@
 * Bridge 桥接模式
 * Command 命令行模式(Action动作/Transaction事务模式)
 * Prototype 原型模式（又叫做克隆模式）
+* Memento 回忆录模式
+* TemplateMethod 模板方法模式（又叫 钩子模式）
   

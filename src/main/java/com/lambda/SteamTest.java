@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -35,6 +36,46 @@ public class SteamTest {
 
         Optional<Integer> min = list.stream().max((a, b) -> b-a);
         System.out.println("min = " + min.get());
+
+        System.out.println("-----------------------------");
+
+        /**
+         * 不使用min,max进行比较（使用sorted）
+         * 自然排序；
+         * 取最大值，进行自定义comparator
+         */
+        Optional<Integer> min2 = list.stream().sorted().findFirst();
+        System.out.println("min2 = " + min2.get());
+        Optional<Integer> max2 = list.stream().sorted((a,b)->b-a).findFirst();
+        System.out.println("max2 = " + max2.get());
+
+        /**
+         * 将集合中的对象过滤并返回一个集合
+         *
+         */
+        List<Integer> collect = list.stream().filter(x -> x % 2 == 0).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+        System.out.println("*****************************");
+        String str = "11,22,33,44,55,66" ;
+        System.out.println(Stream.of(str.split(",")).mapToInt(x -> Integer.valueOf(x)).sum());
+        System.out.println(Stream.of(str.split(",")).mapToInt(Integer::valueOf).sum());
+        System.out.println(Stream.of(str.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum());
+        System.out.println(Stream.of(str.split(",")).map(Integer::valueOf).mapToInt(x -> x).sum());
+
+        /**
+         * 创建一组自定义对象
+         */
+        String str2 = "java,scala,pyhton" ;
+        Stream.of(str2.split(",")).map(x -> new Person(x)).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(Person::new ).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(x -> Person.build(x)).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(Person::build).forEach(System.out::println);
+
+        /**
+         * 将str中的每一个数值打印，同时计算最终求和结果
+         */
+        System.out.println(Stream.of(str.split(",")).peek(System.out::println).mapToInt(Integer::valueOf).sum());
+        System.out.println(list.stream().allMatch(x -> x >= 0));
 
     }
 

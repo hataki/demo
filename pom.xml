@@ -67,6 +67,23 @@
             <version>0.7</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <!--test of BloomFilter-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0-jre</version>
+        </dependency>
+
+
+        <!--util of randomUtils-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+
     </dependencies>
 
     <build>

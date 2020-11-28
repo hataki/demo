@@ -2,8 +2,11 @@
 集合 ： Map collection queue
 queue 队列 （kafka，rocketmq[message queue]）
 
+cas(compare and swap)自旋锁 和 volatile
 
-
+#### 线程池
+1.ThreadPoolExecutor<br>
+2.ForkJoinPool
 
 
 

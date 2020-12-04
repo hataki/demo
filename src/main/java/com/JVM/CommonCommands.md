@@ -16,5 +16,10 @@ jdk1.3之后增加nio，使用直接内存（不需要拷贝，直接访问内�
 ### PC -- Program Counter / ThreadPool 每一个线程都具有一个pc：计数器 
 
 - each java Virtual Machine thread has its own pc  
+- 记录每个线程执行到了哪一条指令
 
-![1607049691338](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\1607049691338.png)
+![1607049739(1)](E:\IDEAworkspace\codePrec\src\main\java\com\JVM\1607049739(1).jpg)
+
+### 栈帧 frame
+
+- a frame is used to store data and partial results , as well as to perform dynamic linking ,return values for methods , and dispatch exceptions .

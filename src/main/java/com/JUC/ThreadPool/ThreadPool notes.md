@@ -13,11 +13,11 @@ cas(compare and swap)自旋锁 和 volatile
 2. COUNT_BITS Integer.SIZE 为32，所以it为29
 3. CAPACITY，线程池允许的最大线程数量。1左移29位，然后-1，即 2^29 -1 
 4. 线程池有5种状态，按大小排序： RUNNING < SHUTDOWN < STOP < TIDYING < TERMINATED
-private static final int RUNNING    = -1 << COUNT_BITS;
-private static final int SHUTDOWN   =  0 << COUNT_BITS;
-private static final int STOP       =  1 << COUNT_BITS;
-private static final int TIDYING    =  2 << COUNT_BITS;
-private static final int TERMINATED =  3 << COUNT_BITS;
+* private static final int RUNNING    = -1 << COUNT_BITS;
+* private static final int SHUTDOWN   =  0 << COUNT_BITS;
+* private static final int STOP       =  1 << COUNT_BITS;
+* private static final int TIDYING    =  2 << COUNT_BITS;
+* private static final int TERMINATED =  3 << COUNT_BITS;
 5. runStateOf() 获取线程池状态，通过按位与操作，低29位将全部变成0
 6. workCountOf() 获取线程池worker的数量，通过按位与操作，高三位将变成0 
 7. ctlOf() 根据线程池状态和线程池worker数量，生成ctl值

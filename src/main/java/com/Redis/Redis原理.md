@@ -1,4 +1,18 @@
-epoll
+epoll \- I/O event notification facility
+
+epoll属于linux内核的一个**新的系统调用**主要是为了应对高并发场景下，替代select和poll的线性复杂模型；epoll的时间复杂度为O(1)
+
+通过**`/proc/sys/fs/epoll/max_user_watches`**
+
+可以查看当前系统所支持最大文件描述符的数量！
+
+epoll函数：
+
+epoll_create:创建一个epoll实例，文件描述符（fd）
+
+epoll_ctl:将监听的fd添加到epoll实例中，
+
+epoll_wait:灯带epoll事件在实例中发生，并返回对应文件描述符
 
 file descriptor 文件描述符
 

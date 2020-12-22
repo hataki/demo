@@ -1,18 +1,20 @@
-## Redis基本使用
+# Redis基本使用
 
-### String 
+## String 
+
+通过 help @string/list..查询命令
 
 （Key -- Value）
 
 - set/get[NX|XX]：添加/获取一个value[NX ：not exist 如果不存在则set | XX ]
-- mset/mget：添加/获取多个key值
+- mset/mget：添加/获取多个key值（只发送一次请求，降低io）
 - append：追加
 - getrange：范围
 - strlen：返回长度
 
 key可以看做一个object，对应的value可以有以下三种类型
 
-### type：返回value的类型
+**type：返回value的类型**
 
 embstr 字符串类型
 
@@ -82,3 +84,49 @@ setbit sean 364 1
 strlen sean 
 
 bitcount sean -2 -1 
+
+例子二
+
+统计用户活跃
+
+使用key来存储日期，value则存储用户通过某种关系转换的映射。
+
+## List
+
+首先想到list是一个链表（不去重！！）
+
+lpush/rpush ： 从左/右放入到list中去
+
+lpop/rpop : 从左/右弹出一个元素
+
+redis的key中会为list自动维护一个 正负索引，同string
+
+lrange
+
+lindex
+
+lrem/linsert key count value...
+
+从左向右按顺序
+
+blpop 阻塞弹出
+
+---
+
+可以描述为 栈stack  -- 同向命令
+
+也可以描述为 队列 -- 反向命令
+
+只操作index（lindex） -- 数组
+
+通过阻塞（blpop） -- 阻塞、单播队列 
+
+---
+
+## hash
+
+key —— value （key--value）相当于value中也存放了一个hashmap
+
+hset/hget : hset user name kitty / hget user name
+
+hmset/hmget : hmset user name kitty age 18 / hmget user name age 

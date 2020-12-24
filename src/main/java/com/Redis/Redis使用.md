@@ -130,3 +130,23 @@ key —— value （key--value）相当于value中也存放了一个hashmap
 hset/hget : hset user name kitty / hget user name
 
 hmset/hmget : hmset user name kitty age 18 / hmget user name age 
+
+## set
+
+无序、去重
+
+集合操作相当多
+
+随机事件：srandmember key count 
+
+- 整数：取出一个去重的结果集（不能超过已有集合）
+- 负数：取出一个带重复的结果集，一定会满足你要的数量
+- 如果：0 不返回
+
+*比如抽奖的时候，可以使用该命令*
+
+spop 取出一个（*模拟年会抽奖*）
+
+## sorted_set
+
+list有序不去重，set去重但无序，所以sorted_set具有必要性

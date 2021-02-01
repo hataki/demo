@@ -26,7 +26,29 @@ tmpfs没有占用实际的物理内存，只有在写入数据的时候，才会
 
 ### URL一致性哈希负载均衡
 
-nginx url hash 
+#### nginx url_hash 
+
+有针对性的对url进行一致性hash 定向负载到后端Nginx 
+
+提高Nginx缓存系统命中率
+
+Nginx第三方模块，在转发请求时如果后端服务器宕机，会导致503错误
+
+
+
+#### lua-resty-http
+
+### GitHub主页
+
+https://github.com/ledgetech/lua-resty-http
+
+### 安装组件
+
+wget https://raw.githubusercontent.com/pintsized/lua-resty-http/master/lib/resty/http_headers.lua  
+
+wget https://raw.githubusercontent.com/pintsized/lua-resty-http/master/lib/resty/http.lua 
+
+
 
 
 

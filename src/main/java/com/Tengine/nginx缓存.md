@@ -52,6 +52,28 @@ wget https://raw.githubusercontent.com/pintsized/lua-resty-http/master/lib/resty
 
 
 
+### 其他缓存
+
+#### 客户端
+
+##### 浏览器缓存
+
+##### ETag**:
+
+http1.1支持
+
+在HTTP协议中If-Modified-Since和If-None-Match分别对应Last-Modified和ETag
+
+Entity Tag 的缩写，中文译过来就是实体标签的意思.
+
+HTTP中并没有指定如何生成ETag，哈希是比较理想的选择。
+
+在计算Etag的时候，会产生CPU的耗费，所以也可以用时间戳，但这样直接使用Last-Modified即可。
+
+ETag 用来校验用户请求的资源是否有变化，作用和lastmodified很像，区别是lastmodified精确到秒，ETag可以用hash算法来生成更精确的比对内容。
+
+当用户首次请求资源的时候返回给用户数据和200状态码并生成ETag，再次请求的时候服务器比对ETag，没有发生变化的话返回304
+
 
 
 #### 浏览器缓存原则

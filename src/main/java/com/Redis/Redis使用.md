@@ -133,7 +133,7 @@ hmset/hmget : hmset user name kitty age 18 / hmget user name age
 
 ## set
 
-无序、去重
+**无序、去重**
 
 集合操作相当多
 
@@ -149,7 +149,27 @@ spop 取出一个（*模拟年会抽奖*）
 
 ## sorted_set
 
-list有序不去重，set去重但无序，所以sorted_set具有必要性
+**list有序不去重，set去重但无序，所以sorted_set具有必要性**
+
+排序既要给出分值也要给出维度（sorted in need）
+
+操作：
+
+```
+维度 价格：品种
+zadd k1 8 apple 2 banana 3 orange 
+zrange k1 0 -1
+zrange k1 0 -1 withscores
+zrangebyscore k1 3 8
+zrange k1 0 1 #价格从低到高
+zrevRange k1 0 1 #价格从高到低取出
+zrange #按范围 
+zscore #按分值
+zrank #按排名
+
+zincrby k1 2.5 banana #banana这个价格增加2.5，支持动态排序
+zrange k1 0 -1 #使用场景 排行榜，维度播放量下载量等
+```
 
 scores：排序所依据的维度
 
@@ -172,3 +192,15 @@ zincrby
 （使用场景：歌曲排行榜，实时投票）
 
 集合操作（交集、并集）
+
+zunionstore [destination numkeys key weight aggregate sum|min|max ] 
+
+```
+zadd k1 80 tom 60 l 70 kim 
+zadd k2 116 jerry 88 m 18 yiming 
+ZUNIONSTORE unkey 2 k1 k2 
+zrange unkey 0 -1 withscores
+ZUNIONSTORE unkey1 2 k1 k2 weights 1 0.2
+zrange unkey1 0 -1 withscores
+```
+

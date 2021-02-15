@@ -135,6 +135,28 @@ LRU 多久没碰撞了
 
 ## 面试常见问题
 
+### 穿透
+
+从业务接收到的查询是你的系统不存在的数据，这样一来就会直接跨过redis缓存去增加数据库压力
+
+解决方案： 
+
+**布隆过滤器**
+
+- client端进行布隆过滤
+- 算法放在后端，redis使用bitmap 过滤
+- redis直接集成布隆
+
+布隆缺点：只能增加不能删除（换布谷鸟，或者删除的key设置为null）
+
+
+
+### 雪崩
+
+类似于击穿（一个key，高并发请求，导致直接越过了redis访问到数据库）
+
+大量的key同时失效，间接造成大量的访问到达数据库
+
 ## Redis持久化
 
 #### 持久化机制 RDB
@@ -194,6 +216,32 @@ $$ 高于 |
 
 ### redis的写操作记录到文件中
 
-丢失数据少
+1. 丢失数据少
+2. redis中，可以同时开启RDB和AOF，如果开启AOF只会使用AOF恢复，*4.0*以后中包含RDB的全量，增加记录新的写操作；
+3. 弊端：体量无限大 --> 恢复慢 ；
+   ***日志优化方案***：
+   · hdfs，fsimage+edits.log 让日志之记录增量合并的过程
+   · 4.0 Before，重写，删除抵消的命令，合并重复的命令，最终也是一个纯命令的日志文件
+   · 4.0 After ， 重写，讲辣的数据RDB到aof文件中，将增量的以指令的方式Append到AOF中，得到一个混合体（利用了RDB的速度，快；同时利用了日志的全量）
 
-redis中，可以同时开启
+**redis --> kernel fd8 buffer (内核会开辟一个buffer缓冲区) --> device** 
+
+redis是内存型数据库  -->  写操作会触发IO  -->  NO:AWAYS 每秒
+
+AOF 默认关闭 ，修改配置文件中的 
+
+```
+appendonly yes 
+appendfilename "appendonly.aof"
+
+auto-aof-rewrite-percentage 100 
+auto-aof-rewrite-min-size 64mb 
+```
+
+三个级别
+
+appendfsync always #每次都直接写buffer，最可靠，最多丢失一条数据
+
+appendfsync everysec #每一秒写一次buffer
+
+appendfsync no #（其实就是内核的写buffer）不主动调取flash，buffer满的时候写入磁盘，缺点就是会丢失一个buffer大小的数据

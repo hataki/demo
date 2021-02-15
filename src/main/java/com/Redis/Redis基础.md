@@ -94,3 +94,17 @@ source /erc/prefile
 - 可执行程序就在同一个目录中，但是内存中未来的多个实例需要各自的配置文件，持久化目录等资源
 - service redis_6379 start/stop/status --> linux  /etc/init.d/***
 
+### 五、redis 跳表
+
+```
+排序是怎么实现的
+增删改查的速度保证
+```
+
+#### skip list 
+
+跳表 ---- 平衡树 
+
+![image-20210214174957566](C:\Users\95\AppData\Roaming\Typora\typora-user-images\image-20210214174957566.png)
+
+对于高并发时 ，  增删改平均效率最优 稳定 

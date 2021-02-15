@@ -119,7 +119,9 @@ blpop 阻塞弹出
 
 只操作index（lindex） -- 数组
 
-通过阻塞（blpop） -- 阻塞、单播队列 
+通过阻塞（blpop） -- 阻塞、单播队列 FIFO的
+
+
 
 ---
 
@@ -203,4 +205,12 @@ zrange unkey 0 -1 withscores
 ZUNIONSTORE unkey1 2 k1 k2 weights 1 0.2
 zrange unkey1 0 -1 withscores
 ```
+
+## Skip List
+
+区别于链表 双向链表
+
+采用跳表结构，  类平衡树结构
+
+（随机分层）
 

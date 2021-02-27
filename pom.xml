@@ -76,6 +76,12 @@
             <version>27.0-jre</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.minio/minio -->
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>7.1.0</version>
+        </dependency>
 
         <!--util of randomUtils-->
         <dependency>

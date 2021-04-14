@@ -37,5 +37,33 @@ ThreadPool 核心的7个参数：<br>
 *  TimeUnit unit,   超时时间单位 TimeUnit.SECONDS
 *  BlockingQueue<Runnable> workQueue, 组的队列
 *  ThreadFactory threadFactory,  线程工厂
-*  RejectedExecutionHandler handler,  拒绝策略
- jdk默认自带的拒绝策略有4种
+* RejectedExecutionHandler handler,  拒绝策略
+
+jdk自带的拒绝策略有四种：
+
+- #### AbortPolicy
+
+ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
+
+- #### DiscardPolicy
+
+ThreadPoolExecutor.DiscardPolicy：丢弃任务，但是不抛出异常。如果线程队列已满，则后续提交的任务都会被丢弃，且是静默丢弃。
+
+- #### DiscardOldestPolicy
+
+ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新提交被拒绝的任务。
+
+- #### CallerRunsPolicy
+
+ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务，当所有线程都在执行任务时，不执行抛弃，直接由正在进行的线程直接去执行；
+
+```
+main Task 62   //所有线程都忙碌，由main去执行
+go 60--- 1618295485531
+cip-Executor3 Task 62
+cip-Executor5 Task 62
+cip-Executor1 Task 62
+cip-Executor2 Task 62
+cip-Executor4 Task 62
+```
+

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @Author: hataki
@@ -36,6 +37,18 @@ public class Lambda {
 
         Runnable run1 = ()-> System.out.println("123");
         run1.run();
+
+        /**
+         * 创建对象的几种方式：
+         * new
+         * 反射
+         * 序列化
+         * clone，调用clone方法需要实现Cloneable接口
+         * Supplier
+         */
+        Supplier<Object> o1 = Object::new;
+        Object o = o1.get();
+
 
         /**
          * 函数接口 Function(t,r) -> t是输入，r是输出

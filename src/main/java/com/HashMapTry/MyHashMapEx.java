@@ -14,8 +14,6 @@ public class MyHashMapEx extends HashMap {
 
         Integer i = 16 ;
 
-
-
         System.err.println(i.getClass().hashCode()   );
         System.err.println(i.hashCode()   );
         System.err.println(((Integer) DEFAULT_INITIAL_CAPACITY).getClass().hashCode());

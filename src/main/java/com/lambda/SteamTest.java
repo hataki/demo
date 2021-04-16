@@ -13,6 +13,14 @@ import java.util.stream.Stream;
  * Time: 16:36
  * description:
  */
+
+/**
+ * 从 Java 8 引入的一个很有趣的特性是 Optional  类。
+ * Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。
+ * 本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。
+ *
+ * Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。
+ */
 public class SteamTest {
 
     public static void main(String[] args) {
@@ -46,7 +54,7 @@ public class SteamTest {
          */
         Optional<Integer> min2 = list.stream().sorted().findFirst();
         System.out.println("min2 = " + min2.get());
-        Optional<Integer> max2 = list.stream().sorted((a,b)->b-a).findFirst();
+        Optional<Integer> max2 = list.stream().parallel().sorted((a,b)->b-a).findFirst();
         System.out.println("max2 = " + max2.get());
 
         /**

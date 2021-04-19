@@ -77,6 +77,11 @@ public class Lambda {
         c1.accept("2");
         c1.accept(3);
         c1.accept(60L);
+        /**
+         * 关于out和err
+         *  out输出是存在缓冲区
+         *  err输出是直接输出，不存在缓冲
+         */
         System.err.println("consumer accept x is : " + c1.andThen(c1).toString());
 
         /**

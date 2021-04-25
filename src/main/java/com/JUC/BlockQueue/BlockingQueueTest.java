@@ -1,5 +1,6 @@
 package com.JUC.BlockQueue;
 
+import org.junit.Test;
 import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
@@ -101,7 +102,7 @@ public class BlockingQueueTest {
 
     }
 
-    private BlockingQueueTest(){} ;
+    public BlockingQueueTest(){} ;
 
 
     public AsyncTaskExecutor runner(){
@@ -131,13 +132,7 @@ public class BlockingQueueTest {
 
     public void running() throws InterruptedException {
         AsyncTaskExecutor executor = runner() ;
-        AsyncTaskExecutor getter = runner() ;
-
-
-
-
-
-
+        AsyncTaskExecutor getter = getter() ;
 
 //        Thread.sleep(1000);
 //        System.out.println(tasks);
@@ -153,7 +148,33 @@ public class BlockingQueueTest {
                 }
             }));
         }
+    }
 
+    @Test
+    public void runExecutor(){
+        AsyncTaskExecutor executor = runner() ;
+
+        for (int j = 0; j < 100000; j++) {
+            executor.execute(new Task(j));
+
+        }
+    }
+
+    @Test
+    public void getExecutor(){
+        AsyncTaskExecutor getter = getter() ;
+
+       while(true) {
+
+//            getter.execute(new Thread(() -> {
+                try {
+                   tasks.take();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }finally {
+                }
+//            }));
+        }
 
     }
 
